@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Con amor para ti</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sue+Ellen+Francisco&family=Gochi+Hand&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
+</head>
+<body>
+  <!-- Pantalla de carga -->
+  <div id="loader">
+    <button id="startTunnel" class="loader-start" type="button" aria-label="Iniciar el túnel de amor" disabled>
+      <span class="loader-heart">
+      <canvas id="loaderHeart" width="260" height="240"></canvas>
+      <canvas id="pixelHand" width="48" height="64"></canvas>
+      </span>
+      <span class="loader-text">PREPARANDO...</span>
+    </button>
+  </div>
+
+  <canvas id="scene"></canvas>
+
+  <h1 class="title">Con amor para ti ❤️</h1>
+
+  <!-- Controles inferiores -->
+  <div class="controls">
+    <span class="bolt">⚡</span>
+    <input id="speed" type="range" min="0" max="100" value="45" />
+  </div>
+  <button id="openMsg" aria-label="Abrir mensaje">💌</button>
+
+  <!-- Mensaje -->
+  <div id="modal" class="hidden">
+    <div class="modal-card">
+      <h2>Un mensaje para ti 💌</h2>
+      <canvas id="modalHeart" width="260" height="240"></canvas>
+      <p>Quería dejarte este mensaje flotando entre las estrellas.</p>
+      <p>Contigo todo se siente distinto, más bonito, más tranquilo. Gracias por estar, por quedarte, por hacer de los días algo que vale la pena recordar.</p>
+      <p>Te quiero muchísimo.</p>
+      <button id="closeMsg">Cerrar</button>
+    </div>
+  </div>
+
+  <audio id="music" src="assets/music.mp3" loop preload="auto"></audio>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

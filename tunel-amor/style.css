@@ -1,0 +1,81 @@
+:root {
+  --pink: #ff8fd0;
+  --glow: #ff4fb8;
+  --font: "Sue Ellen Francisco", "Gochi Hand", "Segoe Print", cursive;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: #000; font-family: var(--font); color: #fff; touch-action: none; }
+
+#scene { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* ---------- Loader ---------- */
+#loader {
+  position: fixed; inset: 0; z-index: 50; background: #000;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.9s ease;
+}
+#loader.out { opacity: 0; pointer-events: none; }
+.loader-start {
+  display: flex; flex-direction: column; align-items: center; gap: 28px;
+  padding: 16px; border: 0; background: transparent; color: inherit; font: inherit;
+  cursor: pointer; touch-action: manipulation;
+}
+.loader-start:disabled { cursor: wait; }
+.loader-start:not(:disabled):hover { transform: scale(1.04); }
+.loader-start:focus-visible { outline: 2px solid #ffb1de; outline-offset: 8px; border-radius: 12px; }
+.loader-heart { position: relative; width: 260px; height: 240px; animation: beat 1.4s ease-in-out infinite; }
+.loader-heart canvas { position: absolute; left: 0; top: 0; }
+#pixelHand { left: 118px !important; top: 130px !important; width: 72px; height: 96px; image-rendering: pixelated; animation: tap 1.1s ease-in-out infinite; }
+.loader-text { font-size: 2.1rem; letter-spacing: 4px; color: #ffb1de; text-shadow: 0 0 10px rgba(255, 90, 190, .6); }
+@keyframes beat { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@keyframes tap { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-6px,-8px); } }
+
+/* ---------- UI ---------- */
+.title {
+  position: fixed; top: 18px; left: 0; right: 0; z-index: 10; text-align: center; pointer-events: none;
+  font-weight: normal; font-size: 1.7rem; letter-spacing: 1px; color: #ffa3dc;
+  text-shadow: 0 0 8px rgba(255, 80, 190, .9), 0 0 18px rgba(255, 80, 190, .5);
+}
+.controls {
+  position: fixed; left: 7%; right: 26%; bottom: 26px; z-index: 10;
+  display: flex; align-items: center; gap: 12px; opacity: .85;
+}
+.bolt { font-size: 1.1rem; filter: drop-shadow(0 0 4px #ffd54a); }
+#speed {
+  -webkit-appearance: none; appearance: none; flex: 1; height: 4px; border-radius: 4px;
+  background: linear-gradient(90deg, rgba(255,120,200,.15), rgba(255,120,200,.55)); outline: none;
+}
+#speed::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%;
+  background: #ff6ec7; box-shadow: 0 0 10px 2px #ff6ec7; cursor: pointer;
+}
+#speed::-moz-range-thumb { width: 16px; height: 16px; border: 0; border-radius: 50%; background: #ff6ec7; box-shadow: 0 0 10px 2px #ff6ec7; }
+
+#openMsg {
+  position: fixed; right: 18px; bottom: 18px; z-index: 10; width: 52px; height: 52px; border-radius: 50%;
+  border: 1px solid rgba(255,140,210,.5); background: rgba(70, 10, 60, .75); font-size: 1.4rem; cursor: pointer;
+  box-shadow: 0 0 14px rgba(255, 80, 190, .5); backdrop-filter: blur(4px);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+
+/* ---------- Modal ---------- */
+#modal {
+  position: fixed; inset: 0; z-index: 40; display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(ellipse at center, rgba(70, 8, 55, .93), rgba(12, 0, 14, .96));
+  backdrop-filter: blur(8px); transition: opacity .6s ease;
+}
+#modal.hidden { opacity: 0; pointer-events: none; }
+.modal-card { width: min(92vw, 440px); text-align: center; padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.modal-card h2 {
+  font-weight: normal; font-size: 1.9rem; color: #ffa3dc; letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(255, 80, 190, .9), 0 0 18px rgba(255, 80, 190, .5);
+}
+.modal-card canvas { filter: drop-shadow(0 0 16px rgba(255, 70, 180, .55)); }
+.modal-card p { font-size: 1.25rem; line-height: 1.5; letter-spacing: .5px; color: #f6e9f3; }
+#closeMsg {
+  margin-top: 6px; padding: 10px 30px; font-family: var(--font); font-size: 1.3rem; letter-spacing: 1px; color: #ffa3dc;
+  background: rgba(60, 0, 50, .5); border: 1px solid rgba(255,120,200,.6); border-radius: 30px; cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 80, 190, .35);
+}
+#closeMsg:hover { background: rgba(255, 80, 190, .2); }

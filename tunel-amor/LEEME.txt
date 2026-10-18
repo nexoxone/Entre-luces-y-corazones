@@ -1,0 +1,4 @@
+1. Abre la carpeta en Visual Studio Code.
+2. Instala la extensión "Live Server" y haz clic derecho en index.html > Open with Live Server.
+3. Pon tus stickers (PNG con fondo transparente) en assets/stickers/ con los nombres s1.png ... s8.png.
+4. Toca la pantalla una vez para que arranque la música (los navegadores lo exigen).
